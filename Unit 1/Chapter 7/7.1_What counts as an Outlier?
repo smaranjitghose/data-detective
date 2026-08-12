@@ -1,0 +1,75 @@
+## An unusual value is a question, not a verdict
+
+A row in a penguin dataset reads 25,000 grams. Every other bird sits between 2,700 and 6,300, so this one is roughly four times heavier than the largest penguin ever recorded.
+
+Almost certainly someone typed an extra digit. But notice what you just did: you decided it was an error using knowledge about penguins, not arithmetic. The number itself is silent about whether it is a mistake.
+
+That is the whole difficulty with outliers. Detecting them is a calculation. Deciding what they mean is a judgement that needs context the data does not contain.
+
+## What counts as an outlier
+
+An outlier is an observation that sits far from the rest of the data.
+
+The definition is deliberately loose, because "far" depends on how spread out everything else is. A 6,300 gram penguin is unremarkable in a file where birds range up to 6,000. The same value among a group averaging 3,700 grams with little variation would stand out sharply.
+
+This is why every detection method works by comparing a value against the spread of the data around it, rather than against a fixed threshold.
+
+## Three kinds, and they demand opposite responses
+
+| Kind | What it is | Example | What to do |
+| --------------- | -------------------------------- | ------------------------------------------ | ---------------------- |
+| Data error | A mistake in recording or entry | 25,000 g for a penguin; age recorded as 999 | Correct it or remove it |
+| Rare but real | A legitimate extreme value | A large bird; a very high earner | Keep it, and report it |
+| The finding | The thing you were looking for | A fraudulent transaction; a failing machine | Study it closely |
+
+The third row is the one beginners get wrong most often, because the standard advice they absorb is that outliers should be removed.
+
+For fraud detection, network intrusion, equipment failure, and disease surveillance, the outliers are the entire point. Routine transactions are noise; the unusual one is the signal. A pipeline that strips outliers before analysis in those settings deletes exactly what it was built to find.
+
+> Whether an outlier is a problem or a discovery depends on the question you are asking, and the same value can be either in two different analyses.
+
+## Telling the kinds apart
+
+The value alone rarely settles it. Four checks usually do.
+
+Is it physically possible? A penguin at 25,000 grams is not. An age of 150 is not. A negative quantity sold is not. Impossibility is the cleanest evidence of an error.
+
+Does it look like a known error pattern? Repeated digits, values exactly ten times too large, placeholder codes like 999 or 9999, and dates on 1 January 1900 are all signatures of specific mistakes.
+
+Do other columns in the same row agree? A bird recorded at 25,000 grams with an ordinary flipper length is inconsistent with itself. A bird that is extreme on several measurements at once is more likely to be unusual.
+
+Can you ask anyone? The person who collected the data usually knows what a strange value means, and this is faster than any amount of inference.
+
+## Why they matter
+
+Outliers change results out of proportion to their number, and the damage runs in several directions at once.
+
+A single extreme value moves the mean substantially while leaving the median untouched. It inflates the standard deviation, which then makes everything else look less variable by comparison. It can halve a correlation, as one mistyped mass did to the flipper-length relationship in the previous unit.
+
+The quiet part is that none of this produces an error message. The analysis runs, the numbers come out, and they are wrong in ways nobody sees.
+
+## Being unusual in combination
+
+Not every outlier is extreme on any single column.
+
+A student who scored 95 in an exam is unremarkable. A student who attended 20% of classes is unremarkable. A student who did both is worth a second look, and neither column flags them on its own.
+
+The same holds in the penguin file. A bird with a bill length typical of Gentoos and a bill depth typical of Adelies would sit comfortably inside the range of both columns while being an odd combination.
+
+Single-column methods, which are the subject of the next two topics, cannot see these. Looking at two columns together can, which is one of the reasons that step exists.
+
+## What not to do
+
+Deleting anything that looks inconvenient is the failure mode, and it has a specific tell: the results improve.
+
+If removing points makes a relationship stronger or a difference clearer, that is not evidence the points were wrong. It is evidence that they were influential, which is a different thing and often the more interesting one.
+
+The defensible sequence is to detect, investigate, decide with a reason, document what you did, and report results both ways when the decision changes the conclusion.
+
+## Practise the judgement
+
+Take a dataset and find its five most extreme values in any numeric column.
+
+For each, write which of the three kinds you think it is and what evidence supports that. Then write down what you would need to check to be sure, and who you would ask.
+
+You will usually find that two are clearly errors, two are clearly real, and one is ambiguous. That last one is where the actual work of this chapter lives.
