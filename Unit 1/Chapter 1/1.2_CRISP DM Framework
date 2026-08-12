@@ -1,0 +1,93 @@
+## Doing the work in the wrong order costs more than doing it slowly
+
+You have probably done this with an assignment. You skim the problem statement, start writing code the same evening, and two days later realise the question asked for something slightly different. The code was fine. The order was wrong.
+
+Data projects fail this way constantly, and the bill is larger.
+
+A college asks a small team to find out why so many students fail the first-year programming paper. The team is capable, so they get the results file and start making charts that afternoon. Three weeks later the charts are finished and the project is stuck.
+
+Nobody had agreed what failing meant, so half the analysis counted students who failed once and cleared the re-exam and half did not. And the results file holds marks only, so every explanation worth testing, about attendance or prior maths or lab access, needed files they never asked for.
+
+Neither problem was about analysis. Both were about sequence.
+
+## Six phases that make a skipped step visible
+
+CRISP-DM stands for Cross-Industry Standard Process for Data Mining. A group of companies assembled it in the late 1990s after repeatedly hitting the mess above, and it remains the most common description of how a data project runs.
+
+None of its six phases is surprising. That is not the point of it.
+
+| Phase | The question it answers | What you finish with |
+| ---------------------- | ---------------------------------------------------- | ------------------------------------------ |
+| Business understanding | What decision does someone need to make? | A written goal in their words |
+| Data understanding | What data exists, and can it support that goal? | A description of the data and its problems |
+| Data preparation | What must be fixed or combined before analysis? | A dataset you trust enough to work on |
+| Modeling | Can a technique predict or group what we care about? | A model and the settings behind it |
+| Evaluation | Does the result answer the original question? | A yes, a no, or a better question |
+| Deployment | How does this reach the people who will use it? | A report, a dashboard, or a running system |
+
+> The phases are not boxes to tick. They are places to be standing, and the useful question is always: which one am I in right now?
+
+## What the first phase actually produces
+
+Business understanding sounds like the vague one, and it is the phase students skip hardest, because it produces writing rather than output.
+
+Done properly it produces three sentences. What decision is waiting on this. What would count as a useful answer. And what is out of scope.
+
+For the programming paper, those three sentences might read: the department wants to decide where to place extra tutorial hours next semester. A useful answer names two or three specific groups of students, or specific topics, that account for a large share of failures. Whether the paper itself is badly designed is not in scope for this work.
+
+Notice what those sentences do. They rule out most of the analyses the team could have run, which is exactly their job. An analysis with no boundary expands until the deadline arrives.
+
+Compare the same project with and without that phase:
+
+| | Without the first phase | With it |
+| --------------- | --------------------------------------- | ---------------------------------- |
+| Definition of failing | Discovered to be ambiguous in week three | Settled on day one, in writing |
+| Files requested | Whatever arrived first | The ones the question needs |
+| When to stop | When time runs out | When the three sentences are answered |
+| What the client gets | Charts | A recommendation with a reason |
+
+## The arrows point backwards as often as forwards
+
+Drawn properly this is a cycle. Three backward moves turn up on nearly every project:
+
+* Data understanding sends you back to business understanding, because the data cannot answer the agreed question and the question has to change.
+* Evaluation sends you back to the start, because the result is correct and answers something nobody asked.
+* Deployment sends you back around, because people begin using the result and immediately want something sharper.
+
+Going backwards is not failure. A project that never loops is usually one where nobody checked. What should worry you is looping without noticing, which looks like a team redoing the same analysis and unable to say why.
+
+## Where the time actually goes
+
+Beginners expect the six phases to be roughly equal in size. They are nowhere close. On real projects the two data phases take most of the effort, and modeling, which sounds like the impressive part, is often the shortest.
+
+Student projects invert this, because a dataset handed out in class arrives clean and preparation takes an hour.
+
+That convenience is teaching equipment, not a preview of the job. The moment you use data somebody collected for a purpose other than yours, the ratio flips: different student identifiers in each file, dates stored as text, one department keeping its own spreadsheet nobody mentioned. Merging those into one trustworthy table is the project, for weeks.
+
+## What each symptom tells you
+
+When a project goes wrong, the visible symptom usually points at a phase that was rushed rather than at a technical error.
+
+| What you notice | The phase that was rushed | The cheapest fix |
+| ------------------------------------------------------- | ---------------------- | ----------------------------- |
+| Two people disagree about what "at risk" means | Business understanding | Write the definition down, get it agreed |
+| A column means something other than its name | Data understanding | Ask whoever maintains the file |
+| Results change each time someone re-runs the work | Data preparation | Rebuild from raw in a fixed order |
+| The finding is correct and nobody acts on it | Deployment | Ask who decides, and in what format they need it |
+| The analysis answers a question nobody asked | Evaluation, or the first phase | Return to the three sentences |
+
+## Where the framework does not help
+
+Two honest limits are worth knowing.
+
+The phases assume a project with an owner and a question. When you are exploring a dataset because it looks interesting, with no decision attached, the first phase has nothing to fill it, and inventing a business goal to satisfy the shape of the map is worse than admitting there is not one.
+
+And the framework says nothing about whether the project should happen. Questions about consent, about who is harmed if the analysis is wrong, and about whether the data should have been collected at all sit outside all six phases, and have to be raised deliberately.
+
+## Practise the first phase
+
+Take a question you could plausibly be asked in your own college: why do students drop the elective they chose, or why does hostel mess wastage rise in some weeks.
+
+Write the three sentences. What decision is waiting. What would count as a useful answer. What is out of scope.
+
+Then list the files you would need, and mark which ones you are not sure exist. That list is the second phase beginning, and if it is short, you have probably written the first sentence too vaguely.
